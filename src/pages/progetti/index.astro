@@ -32,7 +32,7 @@ const projects = (await getCollection("projects"))
 
           <div class="project-content">
             <div class="project-meta">
-              <span class={`status ${project.data.status === "Concluso" ? "done" : "ongoing"}`}>
+              <span class={`status ${project.data.status === "Concluso" ? "status-done" : "status-ongoing"}`}>
                 {project.data.status}
               </span>
               <span class="date">{project.data.pubDate.toLocaleDateString("it-IT")}</span>
@@ -56,8 +56,8 @@ const projects = (await getCollection("projects"))
 <style>
   .intro-box p {
     margin: 0;
-    color: #5f6b85;
-    line-height: 1.7;
+    color: var(--muted);
+    line-height: 1.75;
   }
 
   .project-card {
@@ -70,7 +70,7 @@ const projects = (await getCollection("projects"))
     height: 220px;
     object-fit: cover;
     display: block;
-    border-bottom: 1px solid #e3e8f2;
+    border-bottom: 1px solid var(--border);
   }
 
   .project-content {
@@ -88,38 +88,16 @@ const projects = (await getCollection("projects"))
     flex-wrap: wrap;
   }
 
-  .status {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 0.82rem;
-    font-weight: 700;
-  }
-
-  .status.done {
-    background: #e8f7ee;
-    color: #157347;
-  }
-
-  .status.ongoing {
-    background: #eef4ff;
-    color: #1d4ed8;
-  }
-
-  .date {
-    color: #6b7280;
-    font-size: 0.92rem;
-  }
-
   .project-content h2 {
     margin: 0;
     line-height: 1.3;
+    color: var(--navy);
   }
 
   .project-content p {
     margin: 0;
-    color: #5f6b85;
-    line-height: 1.7;
+    color: var(--muted);
+    line-height: 1.75;
   }
 
   .tags {
@@ -127,15 +105,5 @@ const projects = (await getCollection("projects"))
     gap: 8px;
     flex-wrap: wrap;
     margin-top: auto;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: #f3f6fb;
-    color: #4b5563;
-    font-size: 0.82rem;
-    font-weight: 600;
   }
 </style>

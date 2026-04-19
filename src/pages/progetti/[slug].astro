@@ -30,7 +30,7 @@ const { Content } = await render(project);
 
     <div class="detail-header">
       <div class="meta-row">
-        <span class={`status ${project.data.status === "Concluso" ? "done" : "ongoing"}`}>
+        <span class={`status ${project.data.status === "Concluso" ? "status-done" : "status-ongoing"}`}>
           {project.data.status}
         </span>
         <span class="date">{project.data.pubDate.toLocaleDateString("it-IT")}</span>
@@ -70,10 +70,6 @@ const { Content } = await render(project);
     margin-bottom: 26px;
   }
 
-  .detail-header h1 {
-    margin-bottom: 12px;
-  }
-
   .meta-row {
     display: flex;
     gap: 12px;
@@ -82,30 +78,13 @@ const { Content } = await render(project);
     margin-bottom: 18px;
   }
 
-  .status {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 0.82rem;
-    font-weight: 700;
-  }
-
-  .status.done {
-    background: #e8f7ee;
-    color: #157347;
-  }
-
-  .status.ongoing {
-    background: #eef4ff;
-    color: #1d4ed8;
-  }
-
-  .date {
-    color: #6b7280;
+  h1 {
+    margin-bottom: 12px;
+    color: var(--navy);
   }
 
   .description {
-    color: #5f6b85;
+    color: var(--muted);
     line-height: 1.75;
     font-size: 1.05rem;
   }
@@ -117,17 +96,14 @@ const { Content } = await render(project);
     margin-top: 16px;
   }
 
-  .tag {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: #f3f6fb;
-    color: #4b5563;
-    font-size: 0.82rem;
-    font-weight: 600;
+  .project-content {
+    line-height: 1.85;
+    color: var(--text);
   }
 
-  .project-content {
-    line-height: 1.8;
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
   }
 </style>

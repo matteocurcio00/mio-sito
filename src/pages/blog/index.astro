@@ -40,8 +40,8 @@ const posts = (await getCollection("blog"))
 <style>
   .intro-box p {
     margin: 0;
-    color: #5f6b85;
-    line-height: 1.7;
+    color: var(--muted);
+    line-height: 1.75;
   }
 
   .blog-card {
@@ -58,35 +58,21 @@ const posts = (await getCollection("blog"))
     flex-wrap: wrap;
   }
 
-  .badge {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: #eef4ff;
-    color: #1d4ed8;
-    font-size: 0.82rem;
-    font-weight: 700;
-  }
-
-  .date {
-    color: #6b7280;
-    font-size: 0.92rem;
-  }
-
   .blog-card h2 {
     margin: 0;
     line-height: 1.3;
+    color: var(--navy);
   }
 
   .blog-card p {
     margin: 0;
-    color: #5f6b85;
+    color: var(--muted);
     line-height: 1.7;
   }
 
   .read-more {
     margin-top: auto;
     font-weight: 700;
-    color: #2563eb;
+    color: var(--accent);
   }
 </style>
