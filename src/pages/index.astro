@@ -93,12 +93,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <style>
   .hero-card {
-    overflow: hidden;
-    border: 1px solid #d9e1ec;
-    border-radius: 28px;
-    background: #ffffff;
-    box-shadow: 0 10px 26px rgba(22, 32, 51, 0.08);
-  }
+      overflow: hidden;
+      border: 1px solid #d9e1ec;
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow: 0 10px 26px rgba(22, 32, 51, 0.08);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .hero-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(199, 137, 37, 0.35);
+  box-shadow: 0 18px 38px rgba(22, 32, 51, 0.13);
+}
 
   .hero-top {
     padding: 34px;
@@ -144,8 +154,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 800;
-    transition: 0.2s ease;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      background-color 0.18s ease,
+      filter 0.18s ease;
   }
+
+  .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(22, 32, 51, 0.14);
+  filter: brightness(1.02);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
 
   .btn-dark {
     background: #24324a;
@@ -176,6 +200,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border-right: 1px solid #d9e1ec;
     border-bottom: 1px solid #d9e1ec;
     background: #ffffff;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+    .grid-item:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 0 1px rgba(199, 137, 37, 0.18);
   }
 
   .grid-item:nth-child(2n) {
@@ -203,10 +237,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   .feature-card {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.feature-card::after {
+  content: "→";
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #c78925;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.page-link:hover .feature-card::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-link:hover .feature-card h2 {
+  color: #24324a;
+}
 
   .feature-tag,
   .small-label {
