@@ -4,29 +4,238 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Matteo Curcio | Home"
-  description="Sito personale con blog, progetti e foto"
+  description="Sito personale con blog, progetti e fotografia"
 >
-  <section class="box">
-    <h1>Ciao, questo è il mio sito personale</h1>
-    <p>
-      Qui raccoglierò articoli, progetti, fotografie e aggiornamenti sul mio lavoro.
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Sito personale</span>
+      <h1>Blog, progetti e fotografia in un unico spazio</h1>
+      <p>
+        Ho creato questo sito per raccogliere i miei lavori, gli articoli che scrivo
+        e una selezione di contenuti visivi, con una struttura semplice e ordinata.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/progetti">Vai ai progetti</a>
+        <a class="btn btn-secondary" href="/blog">Leggi il blog</a>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="mini-card">
+        <strong>Progetti</strong>
+        <span>Attività tecniche, ricerca e sviluppo</span>
+      </div>
+      <div class="mini-card">
+        <strong>Blog</strong>
+        <span>Appunti, approfondimenti e aggiornamenti</span>
+      </div>
+      <div class="mini-card">
+        <strong>Foto</strong>
+        <span>Una galleria semplice e personale</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro box">
+    <h2 class="section-title">Una struttura chiara</h2>
+    <p class="section-text">
+      Il sito è organizzato in sezioni distinte per rendere la navigazione più semplice:
+      articoli, portfolio progetti, galleria fotografica e contatti.
     </p>
   </section>
 
   <section class="cards">
-    <div class="card">
-      <h2>Blog</h2>
-      <p>Articoli, idee e approfondimenti.</p>
-    </div>
+    <a class="page-link" href="/blog">
+      <article class="card feature-card">
+        <span class="feature-label">Blog</span>
+        <h2>Articoli e approfondimenti</h2>
+        <p>
+          Una sezione dedicata a contenuti scritti, aggiornamenti e riflessioni su temi
+          tecnici e personali.
+        </p>
+      </article>
+    </a>
 
-    <div class="card">
-      <h2>Progetti</h2>
-      <p>Una raccolta dei miei lavori tecnici e personali.</p>
-    </div>
+    <a class="page-link" href="/progetti">
+      <article class="card feature-card">
+        <span class="feature-label">Progetti</span>
+        <h2>Portfolio dei lavori</h2>
+        <p>
+          Una raccolta ordinata dei progetti sviluppati, con descrizioni, stato e dettagli
+          principali.
+        </p>
+      </article>
+    </a>
 
-    <div class="card">
-      <h2>Foto</h2>
-      <p>Gallerie e contenuti visivi.</p>
+    <a class="page-link" href="/foto">
+      <article class="card feature-card">
+        <span class="feature-label">Foto</span>
+        <h2>Galleria visiva</h2>
+        <p>
+          Uno spazio riservato a immagini e raccolte fotografiche, utile per dare una parte
+          più visiva al sito.
+        </p>
+      </article>
+    </a>
+  </section>
+
+  <section class="home-bottom">
+    <div class="box">
+      <h2 class="section-title">Obiettivo del sito</h2>
+      <p class="section-text">
+        Costruire uno spazio personale semplice da aggiornare, pubblicabile gratuitamente
+        e adatto a mostrare contenuti tecnici, progetti e materiale visivo in modo ordinato.
+      </p>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .hero-text,
+  .hero-panel {
+    background: white;
+    border: 1px solid #e3e8f2;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(20, 30, 55, 0.08);
+  }
+
+  .hero-text {
+    padding: 40px;
+  }
+
+  .hero-panel {
+    padding: 22px;
+    display: grid;
+    gap: 16px;
+    background:
+      linear-gradient(180deg, rgba(37, 99, 235, 0.08), rgba(255,255,255,0.85)),
+      white;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #1d4ed8;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin: 0 0 18px;
+  }
+
+  .hero p {
+    color: #5f6b85;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: #2563eb;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #1d4ed8;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #172033;
+    border-color: #d7deeb;
+  }
+
+  .btn-secondary:hover {
+    background: #f8fbff;
+  }
+
+  .mini-card {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid #dfe7f4;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mini-card strong {
+    font-size: 1rem;
+  }
+
+  .mini-card span {
+    color: #5f6b85;
+    line-height: 1.5;
+  }
+
+  .feature-card {
+    position: relative;
+  }
+
+  .feature-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #1d4ed8;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .home-bottom {
+    margin-top: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-text,
+    .hero-panel {
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+    }
+  }
+</style>
