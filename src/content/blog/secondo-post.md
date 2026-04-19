@@ -2,6 +2,7 @@
 title: "Perché ho creato questo sito"
 description: "Una breve spiegazione del progetto."
 pubDate: 2026-04-18
+category: "Sito web"
 draft: false
 ---
 

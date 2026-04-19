@@ -2,6 +2,7 @@
 title: "Benvenuto nel mio blog"
 description: "Il primo articolo del mio sito personale."
 pubDate: 2026-04-18
+category: "Introduzione"
 draft: false
 ---
 

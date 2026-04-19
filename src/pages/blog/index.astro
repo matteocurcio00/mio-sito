@@ -11,21 +11,82 @@ const posts = (await getCollection("blog"))
   title="Matteo Curcio | Blog"
   description="Articoli e approfondimenti"
 >
-  <section class="box">
+  <section class="box intro-box">
     <h1>Blog</h1>
-    <p>Qui trovi gli articoli pubblicati sul sito.</p>
-    <p><strong>Numero post trovati:</strong> {posts.length}</p>
+    <p>
+      Una raccolta di articoli, aggiornamenti e riflessioni su progetti, idee e contenuti personali.
+    </p>
   </section>
 
   <section class="cards">
     {posts.map((post) => (
-      <article class="card">
-        <h2>
-          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-        </h2>
-        <p>{post.data.description}</p>
-        <p><strong>Data:</strong> {post.data.pubDate.toLocaleDateString("it-IT")}</p>
-      </article>
+      <a class="page-link" href={`/blog/${post.id}/`}>
+        <article class="card blog-card">
+          <div class="meta-row">
+            <span class="badge">{post.data.category}</span>
+            <span class="date">{post.data.pubDate.toLocaleDateString("it-IT")}</span>
+          </div>
+
+          <h2>{post.data.title}</h2>
+          <p>{post.data.description}</p>
+
+          <div class="read-more">Leggi l'articolo →</div>
+        </article>
+      </a>
     ))}
   </section>
 </BaseLayout>
+
+<style>
+  .intro-box p {
+    margin: 0;
+    color: #5f6b85;
+    line-height: 1.7;
+  }
+
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #1d4ed8;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .date {
+    color: #6b7280;
+    font-size: 0.92rem;
+  }
+
+  .blog-card h2 {
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .blog-card p {
+    margin: 0;
+    color: #5f6b85;
+    line-height: 1.7;
+  }
+
+  .read-more {
+    margin-top: auto;
+    font-weight: 700;
+    color: #2563eb;
+  }
+</style>

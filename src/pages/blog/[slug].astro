@@ -19,10 +19,61 @@ const { Content } = await render(post);
   title={`Matteo Curcio | ${post.data.title}`}
   description={post.data.description}
 >
-  <article class="box">
+  <article class="box article-box">
+    <div class="article-meta">
+      <span class="badge">{post.data.category}</span>
+      <span>{post.data.pubDate.toLocaleDateString("it-IT")}</span>
+    </div>
+
     <h1>{post.data.title}</h1>
-    <p><strong>Data:</strong> {post.data.pubDate.toLocaleDateString("it-IT")}</p>
-    <hr style="margin: 24px 0;" />
-    <Content />
+    <p class="article-description">{post.data.description}</p>
+
+    <hr />
+
+    <div class="article-content">
+      <Content />
+    </div>
   </article>
 </BaseLayout>
+
+<style>
+  .article-box {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #6b7280;
+    margin-bottom: 18px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #1d4ed8;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  h1 {
+    margin-bottom: 12px;
+  }
+
+  .article-description {
+    color: #5f6b85;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-top: 0;
+  }
+
+  .article-content {
+    line-height: 1.8;
+    color: #172033;
+  }
+</style>

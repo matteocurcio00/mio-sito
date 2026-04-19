@@ -7,6 +7,8 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    category: z.string().default("Articolo"),
+    cover: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -19,6 +21,7 @@ const projects = defineCollection({
     pubDate: z.coerce.date(),
     status: z.string(),
     tags: z.array(z.string()).default([]),
+    cover: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
