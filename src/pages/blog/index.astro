@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Matteo Curcio | Blog"
+  description="Articoli e approfondimenti"
+>
+  <section class="box">
+    <h1>Blog</h1>
+    <p>Qui trovi gli articoli pubblicati sul sito.</p>
+    <p><strong>Numero post trovati:</strong> {posts.length}</p>
+  </section>
+
+  <section class="cards">
+    {posts.map((post) => (
+      <article class="card">
+        <h2>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        </h2>
+        <p>{post.data.description}</p>
+        <p><strong>Data:</strong> {post.data.pubDate.toLocaleDateString("it-IT")}</p>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

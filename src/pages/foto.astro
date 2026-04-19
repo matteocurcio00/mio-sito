@@ -1,5 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const photos = [
+  "/images/foto/foto1.jpg",
+  "/images/foto/foto2.jpg",
+  "/images/foto/foto3.jpg",
+];
 ---
 
 <BaseLayout
@@ -8,11 +14,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 >
   <section class="box">
     <h1>Foto</h1>
-    <p>
-      Questa sezione ospiterà gallerie fotografiche e immagini organizzate per tema o progetto.
-    </p>
-    <p>
-      Più avanti inseriremo miniature, categorie e foto reali.
-    </p>
+    <p>Una piccola galleria iniziale.</p>
+  </section>
+
+  <section class="cards">
+    {photos.map((photo) => (
+      <div class="card">
+        <img src={photo} alt="Foto galleria" style="width: 100%; border-radius: 12px;" />
+      </div>
+    ))}
   </section>
 </BaseLayout>

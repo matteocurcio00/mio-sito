@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="Matteo Curcio | Progetti"
+  description="Portfolio dei progetti"
+>
+  <section class="box">
+    <h1>Progetti</h1>
+    <p>Qui trovi una selezione dei miei progetti.</p>
+    <p><strong>Numero progetti trovati:</strong> {projects.length}</p>
+  </section>
+
+  <section class="cards">
+    {projects.map((project) => (
+      <article class="card">
+        <h2>
+          <a href={`/progetti/${project.id}/`}>{project.data.title}</a>
+        </h2>
+        <p>{project.data.description}</p>
+        <p><strong>Stato:</strong> {project.data.status}</p>
+        <p><strong>Tag:</strong> {project.data.tags.join(", ")}</p>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
