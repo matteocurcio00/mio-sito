@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Picture } from "astro:assets";
+import { photoCollections } from "../../data/photos";
+---
+
+<BaseLayout
+  title="Matteo Curcio | Foto"
+  description="Raccolte fotografiche"
+>
+  <section class="box intro-box">
+    <span class="section-label">Foto</span>
+    <h1>Raccolte fotografiche</h1>
+    <p>
+      Raccolte tematiche con anteprime ottimizzate e gallerie dedicate.
+    </p>
+  </section>
+
+  <section class="collections-grid">
+    {photoCollections.map((collection) => (
+      <a class="page-link" href={`/foto/${collection.slug}/`}>
+        <article class="collection-card">
+          <div class="collection-cover-wrap">
+            <Picture
+              src={collection.cover.image}
+              alt={collection.title}
+              formats={["avif", "webp"]}
+              class="collection-cover"
+              sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+            />
+            <div class="collection-overlay">
+              <span class="photo-count">{collection.count} foto</span>
+            </div>
+          </div>
+
+          <div class="collection-content">
+            <h2>{collection.title}</h2>
+            <p>{collection.description}</p>
+
+            <div class="preview-strip">
+              {collection.photos.slice(0, 3).map((photo) => (
+                <Picture
+                  src={photo.image}
+                  alt={photo.alt}
+                  formats={["avif", "webp"]}
+                  class="preview-thumb"
+                  sizes="120px"
+                />
+              ))}
+            </div>
+          </div>
+        </article>
+      </a>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-box p {
+    margin: 0;
+    color: #5f6b7f;
+    line-height: 1.75;
+  }
+
+  .section-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: #f3e0ba;
+    color: #24324a;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .collection-card {
+    overflow: hidden;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid #d9e1ec;
+    border-radius: 22px;
+    box-shadow: 0 10px 26px rgba(22, 32, 51, 0.08);
+    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+  }
+
+  .collection-cover-wrap {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #d9e1ec;
+  }
+
+  .collection-cover {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.3s ease;
+  }
+
+  .collection-overlay {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .photo-count {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(36, 50, 74, 0.92);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .collection-content {
+    padding: 28px;
+  }
+
+  .collection-content h2 {
+    margin: 0 0 10px;
+    line-height: 1.25;
+  }
+
+  .collection-content p {
+    margin: 0;
+    color: #5f6b7f;
+    line-height: 1.7;
+  }
+
+  .preview-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .preview-thumb {
+    width: 100%;
+    height: 78px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #d9e1ec;
+  }
+
+  .page-link:hover .collection-card {
+    transform: translateY(-7px);
+    border-color: rgba(199, 137, 37, 0.38);
+    box-shadow: 0 22px 40px rgba(22, 32, 51, 0.15);
+  }
+
+  .page-link:hover .collection-cover {
+    transform: scale(1.04);
+    filter: saturate(1.04);
+  }
+</style>

@@ -6,14 +6,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Matteo Curcio | Contatti"
   description="Pagina contatti"
 >
-  <section class="box">
-    <h1>Contatti</h1>
+  <section class="box contact-box">
+    <span class="contact-label">Contatti</span>
+    <h1>Riferimenti principali</h1>
     <p>
-      In questa pagina inserirò i miei riferimenti principali, come email, LinkedIn e altri
-      canali utili.
+      In questa pagina inserirò i miei riferimenti principali, come email, LinkedIn
+      e altri canali utili.
     </p>
     <p>
-      Per ora puoi usare questo spazio come segnaposto iniziale.
+      Per ora puoi usare questo spazio come base iniziale da completare in seguito.
     </p>
   </section>
 </BaseLayout>
+
+<style>
+  .contact-box {
+    max-width: 820px;
+    margin: 0 auto;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .contact-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(199, 137, 37, 0.35);
+    box-shadow: 0 18px 38px rgba(22, 32, 51, 0.13);
+  }
+
+  .contact-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: #f3e0ba;
+    color: #24324a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+
+  .contact-box p {
+    color: #5f6b7f;
+    line-height: 1.75;
+  }
+</style>

@@ -2,4 +2,8 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   output: 'static',
+  image: {
+    layout: 'constrained',
+    responsiveStyles: true,
+  },
 });

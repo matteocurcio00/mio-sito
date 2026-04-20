@@ -122,24 +122,34 @@ function isActive(path: string) {
       main {
         max-width: var(--max-width);
         margin: 0 auto;
-        padding: 24px 20px 60px;
+        padding: 28px 20px 64px;
       }
 
       .box {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 30px;
-        box-shadow: var(--shadow);
-      }
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow);
+     }
 
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 22px;
-        margin-top: 24px;
-      }
+     .page-link,
+    .page-link:visited {
+      color: inherit;
+      text-decoration: none;
+    }
 
+    .page-link * {
+      text-decoration: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      }
       .card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -194,19 +204,19 @@ function isActive(path: string) {
       }
 
       @media (max-width: 700px) {
-        .box,
-        .card {
-          padding: 22px;
-        }
-
-        .section-title {
-          font-size: 1.55rem;
-        }
-
-        .header-shell {
-          padding: 12px 14px;
-        }
+      .box,
+      .card {
+        padding: 24px;
       }
+
+      .section-title {
+        font-size: 1.55rem;
+      }
+
+      .header-shell {
+        padding: 12px 14px;
+      }
+    }
     </style>
   </head>
 
